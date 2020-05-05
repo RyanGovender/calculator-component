@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Calculator</title>
+  <base href="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="./assets/cal.js"></script>
+</head>
+<body>
+   <input #textbox1 name="textbox1" type="number"  placeholder ="0" id="num1" >
+   <input #textbox2 name="textbox2" type="number" placeholder ="0" id="num2" > 
+   <button onclick="getInputValue();"> Calculate </button>
+   <custom-calculator-add id="calculator"></custom-calculator-add>
+
+   <script>
+    const cal= document.querySelector('custom-calculator-add');
+     cal.addEventListener('output',(event) =>{
+       console.log(`"output" emitted: ${event.detail}`);
+     });
+
+     function getInputValue()
+     {
+       document.getElementById('calculator').number1 = getTextBoxValue('num1');
+       document.getElementById('calculator').number2 = getTextBoxValue('num2');
+     }
+
+     function getTextBoxValue(textBoxId)
+     {
+         return document.getElementById(textBoxId).value;
+     }
+  </script>
+</body>
+</html>
